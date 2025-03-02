@@ -1,0 +1,188 @@
+import pyttsx3
+import speech_recognition as sr
+
+mic_index = 5
+
+def SpeakText(command):
+    engine=pyttsx3.init()
+    engine.say(command)
+    engine.runAndWait()
+
+def basics(text_mode=False):
+    import pyttsx3
+    import speech_recognition as sr
+
+    text_speech = pyttsx3.init()
+    
+    if not text_mode:
+        x = "Say 'yes' to start the quiz."
+        print(x)
+        text_speech.say(x)
+        text_speech.runAndWait()
+
+    r = sr.Recognizer()
+    
+    score = 0
+    questions = {
+        "Which of these is a storage location in Python?\n (a) Constants\n (b) Data types\n (c) Variables\n": "c",
+        "Which of these is NOT a feature of Python?\n (a) Portable\n (b) Open Source\n (c) Structured language\n": "c",
+        "When we save a Python file, the extension is?\n (a) .python\n (b) .py\n (c) .pi\n": "b",
+    }
+
+    for question, answer in questions.items():
+        while True:  
+            print(question)
+            if not text_mode:
+                text_speech.say(question)
+                text_speech.runAndWait()
+
+            try:
+                if text_mode:  
+                    MyText = input("Your response: ").strip().lower()
+                else:  
+                    with sr.Microphone() as source2:
+                        r.adjust_for_ambient_noise(source2, duration=3.0)  
+                        print("Listening...")
+                        audio2 = r.listen(source2, timeout=5)  
+
+                        MyText = r.recognize_google(audio2).lower()
+                        print("Your response:", MyText)
+
+                if MyText == answer:
+                    score += 1
+                    print("Correct!")
+                    if not text_mode:
+                        text_speech.say("Correct!")
+                else:
+                    print("Incorrect!")
+                    if not text_mode:
+                        text_speech.say("Incorrect!")
+
+                text_speech.runAndWait()
+                break  
+                
+            except sr.UnknownValueError:
+                print("Couldn't hear you! Please repeat.")
+                if not text_mode:
+                    text_speech.say("Couldn't hear you! Please repeat.")
+                    text_speech.runAndWait()
+                continue 
+
+            except sr.RequestError as e:
+                print(f"Error connecting to Google Speech API: {e}")
+                if not text_mode:
+                    text_speech.say("There was an error. Please check your internet connection.")
+                    text_speech.runAndWait()
+                return  
+
+    print("Total Score:", score)
+    if not text_mode:
+        text_speech.say(f"Your total score is {score}")
+        text_speech.runAndWait()
+
+
+def lists():
+    pass
+
+def operators():
+    pass
+
+def voice():
+    text_speech = pyttsx3.init()
+    x = "The Topics are Python Basics, Python Lists, Python Operators. Choose one."
+    print(x)
+    text_speech.say(x)
+    text_speech.runAndWait()
+
+    r = sr.Recognizer()
+    
+    while True:
+        try:
+            with sr.Microphone() as source2:
+                r.adjust_for_ambient_noise(source2, duration=1.0)
+                print("Listening...")
+                audio2 = r.listen(source2, timeout=5)
+                MyText = r.recognize_google(audio2).lower()
+                print("Your response:", MyText)
+
+                if "basics" in MyText:
+                    basics()
+                elif "list" in MyText:
+                    lists()
+                elif "operator" in MyText:
+                    operators()
+                else:
+                    text_speech.say("Invalid choice. Please try again.")
+                    text_speech.runAndWait()
+        except sr.UnknownValueError:
+            print("Couldn't hear you! Please repeat.")
+            text_speech.say("Couldn't hear you! Please repeat.")
+            text_speech.runAndWait()
+
+
+def text():
+    print("The Topics - Python Basics | Python Lists | Python Operators")
+    y = input("Choose a Topic: ").strip().lower()
+    if "basics" in y:
+        basics(text_mode=True)  
+    elif "list" in y:
+        lists(text_mode=True)
+    elif "operator" in y:
+        operators(text_mode=True)
+    else:
+        print("Invalid choice. Try again.")
+
+import speech_recognition as sr
+import pyttsx3
+
+def SpeakText(command):
+    engine = pyttsx3.init()
+    engine.say(command)
+    engine.runAndWait()
+
+def main():
+    SpeakText("Hello! Welcome To The Python World! Would you like the Text Mode or Voice Mode? Choose between the two!")
+    print("Hello! Welcome To The Python World! Would you like the Text Mode or Voice Mode? Choose between the two!")
+
+    r = sr.Recognizer()
+
+    while True:
+        mode = input("Choose mode (text/voice): ").strip().lower()
+
+        if mode == "text":
+            print("Text mode selected.")
+            text() 
+            break
+        elif mode == "voice":
+            print("Voice mode selected. Now listening for voice input...")
+            break  
+        elif mode == "":
+            print("No input detected. Please enter 'text' or 'voice'.")
+        else:
+            print("Invalid choice. Please enter 'text' or 'voice'.")
+
+    with sr.Microphone(device_index=mic_index) as source2:
+        print(f"Using: {sr.Microphone.list_microphone_names()[mic_index]}")
+        r.adjust_for_ambient_noise(source2, duration=2.0)
+        print("Listening...")
+        audio2 = r.listen(source2, timeout=5)
+
+        try:
+            MyText = r.recognize_google(audio2).lower()
+            print("Recognized:", MyText)
+
+            if "voice" in MyText:
+                print("Starting voice mode...")
+                voice()
+            else:
+                print("Didn't detect 'voice'. Try again.")
+
+        except sr.UnknownValueError:
+            print("Couldn't understand. Please try again.")
+        except sr.RequestError as e:
+            print(f"Google Speech API error: {e}")
+
+
+
+if __name__=="__main__":
+    main()
