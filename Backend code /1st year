@@ -1,0 +1,847 @@
+
+
+
+def basics():
+    import pyttsx3
+    text_speech = pyttsx3.init()
+    x=("Say 'yes' to start the quiz.")
+    print(x)
+    text_speech.say(x)
+    text_speech.runAndWait()
+
+
+    import speech_recognition as sr
+    import pyttsx3
+
+
+    #Initialize the recognizer
+    r = sr.Recognizer()
+
+
+    #Function to convert text to
+    #speech
+    def SpeakText(command):
+
+
+        # Initialize the engine
+        engine = pyttsx3.init()
+        engine.say(command)
+        engine.runAndWait()
+
+
+    # Loop infinitely for user to speak
+
+
+    while(1):
+
+
+        # Exception handling to handle
+        # exceptions at the runtime
+        try:
+
+
+             # use the microphone as source for input.
+             with sr.Microphone() as source2:
+
+
+                 # wait for a second to let the recognizer
+                 # adjust the energy threshold based on
+                        # the surrounding noise level
+                 r.adjust_for_ambient_noise(source2, duration=0.2)
+
+
+                 #listens for the user's input
+                 audio2 = r.listen(source2)
+
+
+                 # Using ggogle to recognize audio
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+
+
+                 print("Your response "+MyText)
+                 SpeakText("okay then!")
+
+
+                 score=0
+
+
+                 quest1='Which of these is storage locations in Python.\n (a)Constants\n (b)Data types\n (c)Variables\n What is your response?'
+                 print(quest1)
+                 SpeakText(quest1)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='c':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                     
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+
+
+                 quest2='Which of these is NOT a feature of Python?\n (a)Portable\n (b)Open Source\n (c)structured lang\n What is your response?'
+                 print(quest2)
+                 SpeakText(quest2)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='c':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+
+
+                 quest3='When we save a python file, the extension is\n (a).python\n (b).py\n (c).pi\n What is your response?'
+                 print(quest3)
+                 SpeakText(quest3)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='b':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 quest4='When we type a command, we can see the result immediately in this\n (a)Python Script\n (b)Command Line\n (c)None of these\n What is your response?'
+                 print(quest4)
+                 SpeakText(quest4)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='c':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 quest5='Which of these is a correct statement?\n (a)In script mode, we have to save a program to be able to run it\n (b)We cannot write multi line programs in the interactive mode\n (c)A Python program can be run in script mode only\n What is your response?'
+                 print(quest5)
+                 SpeakText(quest5)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='a':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 quest6='When we declare a variable in Python with a value of type integer, the variable remains an integer throughout the program.\n (a) True\n (b) False\n What is your response?'
+                 print(quest6)
+                 SpeakText(quest6)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='a':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+
+
+                 quest7='Which of the following is true for variable names in Python?\n (a)cannot be of unlimited length\n (b)can start with a digit\n (c)can have an underscore\n What is your response?'
+                 print(quest7)
+                 SpeakText(quest7)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='c':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 print("Total Score: ",score)
+                 break
+                 
+        except sr.RequestError as e:
+            print("Could not request results; {0}".format(e))
+        except sr.UnknownValueError:
+            print("Couldn't hear ya ! please repeat")
+            SpeakText("Couldn't hear ya ! please repeat")
+
+
+#Python Lists Function Starts
+
+
+def lists():
+    import pyttsx3
+    text_speech = pyttsx3.init()
+    x=("Say 'yes' to start the quiz.")
+    print(x)
+    text_speech.say(x)
+    text_speech.runAndWait()
+
+
+    import speech_recognition as sr
+    import pyttsx3
+
+
+    #Initialize the recognizer
+    r = sr.Recognizer()
+
+
+    #Function to convert text to
+    #speech
+    def SpeakText(command):
+
+
+        # Initialize the engine
+        engine = pyttsx3.init()
+        engine.say(command)
+        engine.runAndWait()
+
+
+    # Loop infinitely for user to speak
+
+
+    while(1):
+
+
+        # Exception handling to handle
+        # exceptions at the runtime
+        try:
+
+
+             # use the microphone as source for input.
+             with sr.Microphone() as source2:
+
+
+                 # wait for a second to let the recognizer
+                 # adjust the energy threshold based on
+                        # the surrounding noise level
+                 r.adjust_for_ambient_noise(source2, duration=0.2)
+
+
+                 #listens for the user's input
+                 audio2 = r.listen(source2)
+
+
+                 # Using ggogle to recognize audio
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+
+
+                 print("Your response "+MyText)
+                 SpeakText("okay then!")
+
+
+                 score=0
+
+
+                 quest1='Which of these functions can be used to get the position of an element in a list?\n (a)append()\n (b)index()\n (c)remove()\n What is your response?'
+                 print(quest1)
+                 SpeakText(quest1)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='b':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                     
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+
+
+                 quest2='Which of these statements is NOT true about lists in Python\n (a)Lists can store data of any type\n (b)Lists can be indexed both ways\n (c)Lists are immutable\n What is your response?'
+                 print(quest2)
+                 SpeakText(quest2)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='c':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+
+
+                 quest3='Lists can be indexed by\n (a)a decimal\n (b)any data type\n (c)an integer\n What is your response?'
+                 print(quest3)
+                 SpeakText(quest3)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='b':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 quest4='Which one of these is the method to add elements\n (a)insert\n (b)delete\n (c) pop\n What is your response?'
+                 print(quest4)
+                 SpeakText(quest4)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='a':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 quest5='Which one of these is method to remove elements\n (a)remove\n (b)clear\n (c)both a and b\n What is your response?'
+                 print(quest5)
+                 SpeakText(quest5)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='c':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 quest6='Count method is used for?\n (a)Returns number of occurrences of the element passed as argument to the method \n (b) Reverses order of elements in the same list\n (c)Returns index of the element passed as argument\n What is your response?'
+                 print(quest6)
+                 SpeakText(quest6)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='a':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+
+
+                 quest7='Python allows backward indexing also. So the last element of list have index values -1.\n (a)False\n (b)True\n What is your response?'
+                 print(quest7)
+                 SpeakText(quest7)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='b':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 print("Total Score: ",score)
+                 break
+                 
+        except sr.RequestError as e:
+            print("Could not request results; {0}".format(e))
+        except sr.UnknownValueError:
+            print("Couldn't hear ya ! please repeat")
+            SpeakText("Couldn't hear ya ! please repeat")
+
+
+#Python Operators and Expression function starts
+
+
+def operators():
+    import pyttsx3
+    text_speech = pyttsx3.init()
+    x=("Say 'yes' to start the quiz.")
+    print(x)
+    text_speech.say(x)
+    text_speech.runAndWait()
+
+
+    import speech_recognition as sr
+    import pyttsx3
+
+
+    #Initialize the recognizer
+    r = sr.Recognizer()
+
+
+    #Function to convert text to
+    #speech
+    def SpeakText(command):
+
+
+        # Initialize the engine
+        engine = pyttsx3.init()
+        engine.say(command)
+        engine.runAndWait()
+
+
+    # Loop infinitely for user to speak
+
+
+    while(1):
+
+
+        # Exception handling to handle
+        # exceptions at the runtime
+        try:
+
+
+             # use the microphone as source for input.
+             with sr.Microphone() as source2:
+
+
+                 # wait for a second to let the recognizer
+                 # adjust the energy threshold based on
+                        # the surrounding noise level
+                 r.adjust_for_ambient_noise(source2, duration=0.2)
+
+
+                 #listens for the user's input
+                 audio2 = r.listen(source2)
+
+
+                 # Using google to recognize audio
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+
+
+                 print("Your response "+MyText)
+                 SpeakText("okay then!")
+
+
+                 score=0
+
+
+                 quest1='Which of the following type of operators have the highest precedence\n (a)Relational\n (b)Arithematic\n (c)Logical\n What is your response?'
+                 print(quest1)
+                 SpeakText(quest1)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='b':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                     
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+
+
+                 quest2='Which of the following statement is NOT true of logical operators in Python?\n (a)They can be used to join conditions\n (b)They return a Boolean value they are all binary operators\n (c)They are all binary operators\n What is your response?'
+                 print(quest2)
+                 SpeakText(quest2)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='c':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+
+
+                 quest3='What will be the output of the following statement?print(4>9)\n (a)True\n (b)False\n (c)0\n What is your response?'
+                 print(quest3)
+                 SpeakText(quest3)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='b':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 quest4='Which of this is NOT an arithmetic operator?\n (a)+\n (b)-\n (c)!\n What is your response?'
+                 print(quest4)
+                 SpeakText(quest4)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='b':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 quest5='Python compares strings in which manner\n (a)Lexicographic\n (b)Local\n (c)Limited\n What is your response?'
+                 print(quest5)
+                 SpeakText(quest5)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='a':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 quest6='Which operator is used for numeric values\n (a)Arithematic\n (b)Relational\n (c)Module\n What is your response?'
+                 print(quest6)
+                 SpeakText(quest6)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='a':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+
+
+                 quest7='Which of the following is not a Operator\n (a)Relational\n (b)Logical\n (c)Boolean\n What is your response?'
+                 print(quest7)
+                 SpeakText(quest7)
+                 audio2 = r.listen(source2)
+                 MyText = r.recognize_google(audio2)
+                 MyText = MyText.lower()
+                 print("Your response "+MyText)
+                 if MyText=='b':
+                     score+=1
+                     print('Correct')
+                     SpeakText('Correct')
+                 else:
+                     print('InCorrect')
+                     SpeakText('InCorrect')
+
+
+                 print("Total Score: ",score)
+                 break
+                 
+        except sr.RequestError as e:
+            print("Could not request results; {0}".format(e))
+        except sr.UnknownValueError:
+            print("Couldn't hear ya ! please repeat")
+            SpeakText("Couldn't hear ya ! please repeat")
+
+
+#Function call code starts
+def voice():
+    import pyttsx3
+    text_speech = pyttsx3.init()
+    y=(" The Topics - Python Basics\t Python Lists \t Python Operators")
+    x=(" The Topics are Python Basics Python Lists Python Operators. Choose the Topic")
+    print(y)
+    text_speech.say(x)
+    text_speech.runAndWait()
+
+
+
+
+    import speech_recognition as sr
+    import pyttsx3 
+  
+    #Initialize the recognizer 
+    r = sr.Recognizer() 
+   
+    #Function to convert text to
+    #speech
+    def SpeakText(command):
+        
+        # Initialize the engine
+        engine = pyttsx3.init()
+        engine.say(command) 
+        engine.runAndWait()
+      
+
+
+    # Loop infinitely for user to speak
+  
+    while(1):
+        
+
+
+        # Exception handling to handle
+        # exceptions at the runtime
+        try:
+            # use the microphone as source for input.
+            with sr.Microphone() as source2:
+              
+                # wait for a second to let the recognizer
+                # adjust the energy threshold based on
+                         # the surrounding noise level 
+                r.adjust_for_ambient_noise(source2, duration=0.2)
+              
+                #listens for the user's input 
+                audio2 = r.listen(source2)
+              
+                # Using google to recognize audio
+                MyText = r.recognize_google(audio2)
+                MyText = MyText.lower()
+
+
+                if MyText=="python basics" or MyText=="basics":
+                    print(basics())
+                elif MyText=="python lists" or MyText=="python list":
+                    print(lists())
+                elif MyText=="python operators":
+                    print(operators())  
+
+
+                print("Your response "+MyText)
+                SpeakText("okay then!")
+              
+        except sr.RequestError as e:
+            print("Could not request results; {0}".format(e))
+          
+        except sr.UnknownValueError:
+            print("Couldn't hear ya ! please repeat")
+            SpeakText("Couldn't hear ya ! please repeat")
+
+
+def basics():
+    class Question:
+        def _init_(self, prompt, answer):
+            self.prompt = prompt
+            self.answer=answer
+    question_prompts=[
+    "Which of these is storage locations in Python.\n (a)Constants\n (b)Data types\n (c)Variables\n  ans; ", '\n'
+    'Which of these is NOT a feature of Python?\n (a)Portable\n (b)Open Source\n (c)structured lang\n ans;','\n'
+    "When we type a command, we can see the result immediately in this\n (a)Python Script\n (b)Command Line\n (c)None of these\n  ans; ", '\n'
+    "Which of these is a correct statement?\n (a)In script mode, we have to save a program to be able to run it\n (b)We cannot write multi line programs in the interactive mode\n (c)A Python program can be run in script mode only\n  ans; ", '\n'
+    "When we declare a variable in Python with a value of type integer, the variable remains an integer throughout the program.\n (a) True\n (b) False\n  ans; ", '\n'
+    "Which of the following is true for variable names in Python?\n (a)cannot be of unlimited length\n (b)can start with a digit\n (c)can have an underscore\n  ans; ", '\n'
+    'When we save a python file, the extension is\n (a).python\n (b).py\n (c).pi \n ans;',]
+    name=input("Flease enter your name: ").title()
+    questions=[
+    Question(question_prompts[0], "c"),
+    Question(question_prompts[1], "c"),
+    Question(question_prompts[2], "c"),
+    Question(question_prompts[3], "a"),
+    Question(question_prompts[4], "a"),
+    Question(question_prompts[5], "c"),
+    Question(question_prompts[6], "b"),]
+    def run_quiz(questions):
+      score = 0
+      for question in questions:
+          answer=input(question.prompt)
+          if answer== question.answer:
+            score += 1
+      print("Total Score- ",score)
+    run_quiz(questions)
+
+
+
+
+def lists():
+    class Question:
+        def _init_(self, prompt, answer):
+            self.prompt = prompt
+            self.answer=answer
+    question_prompts=[
+    "Which of these functions can be used to get the position of an element in a list?\n (a)append()\n (b)index()\n (c)remove()\n  ans; ", '\n'
+    'Which of these statements is NOT true about lists in Python\n (a)Lists can store data of any type\n (b)Lists can be indexed both ways\n (c)Lists are immutable\n ans;','\n'
+    "Lists can be indexed by\n (a)a decimal\n (b)any data type\n (c)an integer\n  ans; ", '\n'
+    "Lists can be indexed by\n (a)a decimal\n (b)any data type\n (c)an integer\n  ans; ", '\n'
+    "Which one of these is method to remove elements\n (a)remove\n (b)clear\n (c)both a and b\n  ans; ", '\n'
+    "Count method is used for?\n (a)Returns number of occurrences of the element passed as argument to the method \n (b) Reverses order of elements in the same list\n (c)Returns index of the element passed as argument\n  ans; ", '\n'
+    'Python allows backward indexing also. So the last element of list have index values -1.\n (a)False\n (b)True \n ans;',]
+    name=input("Flease enter your name: ").title()
+    questions=[
+    Question(question_prompts[0], "b"),
+    Question(question_prompts[1], "c"),
+    Question(question_prompts[2], "b"),
+    Question(question_prompts[3], "a"),
+    Question(question_prompts[4], "c"),
+    Question(question_prompts[5], "a"),
+    Question(question_prompts[6], "b"),]
+    def run_quiz(questions):
+      score = 0
+      for question in questions:
+          answer=input(question.prompt)
+          if answer== question.answer:
+            score += 1
+      print("Total Score- ",score)
+    run_quiz(questions)
+
+
+
+
+def operators():
+    class Question:
+        def init(self, prompt, answer):
+            self.prompt = prompt
+            self.answer=answer
+    question_prompts=[
+    "Which of the following type of operators have the highest precedence\n (a)Relational\n (b)Arithematic\n (c)Logical\n  ans; ", '\n'
+    'Which of the following statement is NOT true of logical operators in Python?\n (a)They can be used to join conditions\n (b)They return a Boolean value they are all binary operators\n (c)They are all binary operators\n ans;','\n'
+    "What will be the output of the following statement?print(4>9)\n (a)True\n (b)False\n (c)0\n  ans; ", '\n'
+    "Which of this is NOT an arithmetic operator?\n (a)+\n (b)-\n (c)!\n  ans; ", '\n'
+    "Python compares strings in which manner\n (a)Lexicographic\n (b)Local\n (c)Limited\n  ans; ", '\n'
+    "Which operator is used for numeric values\n (a)Arithematic\n (b)Relational\n (c)Module\n  ans; ", '\n'
+    'Which of the following is not a Operator\n (a)Relational\n (b)Logical\n (c)Boolean\n ans;',]
+    name=input("Flease enter your name: ").title()
+    questions=[
+    Question(question_prompts[0], "b"),
+    Question(question_prompts[1], "c"),
+    Question(question_prompts[2], "b"),
+    Question(question_prompts[3], "b"),
+    Question(question_prompts[4], "a"),
+    Question(question_prompts[5], "a"),
+    Question(question_prompts[6], "c"),]
+    def run_quiz(questions):
+      score = 0
+      for question in questions:
+          answer=input(question.prompt)
+          if answer== question.answer:
+            score += 1
+      print("Total Score- ",score)
+    run_quiz(questions)    
+
+
+
+
+def text():
+    print(" The Topics - Python Basics\t Python Lists \t Python Operators")
+    y=input("Choose a Topic ")
+    if y=="Python Basics" or y=="python basics" or y=="basics":
+        basics()
+    elif y=="Python Lists" or y=="python lists" or y=="list":
+        lists()
+    y=="Python Operators" or y=="python operators" or y=="operators":
+        operators()
+    
+
+
+
+
+
+
+import pyttsx3
+text_speech = pyttsx3.init()
+y=("Hello ! Welcome To The Python World! Would you like the Text Mode or Voice Mode? Choose between the two !")
+x=("Hello ! Welcome To The Python World! Would you like the Text Mode or Voice Mode? Choose between the two !")
+print(y)
+text_speech.say(x)
+text_speech.runAndWait()
+
+
+
+
+import speech_recognition as sr
+import pyttsx3 
+  
+#Initialize the recognizer 
+r = sr.Recognizer() 
+   
+#Function to convert text to
+#speech
+def SpeakText(command):
+      
+    # Initialize the engine
+    engine = pyttsx3.init()
+    engine.say(command) 
+    engine.runAndWait()
+      
+
+
+# Loop infinitely for user to speak
+  
+while(1):    
+ 
+    # Exception handling to handle
+    # exceptions at the runtime
+    try:
+             
+        # use the microphone as source for input.
+        with sr.Microphone() as source2:
+              
+            # wait for a second to let the recognizer
+            # adjust the energy threshold based on
+                         # the surrounding noise level 
+            r.adjust_for_ambient_noise(source2, duration=0.2)
+              
+            #listens for the user's input 
+            audio2 = r.listen(source2)
+              
+            # Using google to recognize audio
+            MyText = r.recognize_google(audio2)
+            MyText = MyText.lower()
+
+            if MyText=="text":
+                print(text())
+            elif MyText=="voice" or Mytext=="boys":
+                print(voice())  
+            print("Your response "+MyText)
+            SpeakText("okay then!")
+    except sr.RequestError as e:
+        print("Could not request results; {0}".format(e))
+    except sr.UnknownValueError:
+        print("Couldn't hear ya ! please repeat")
+        SpeakText("Couldn't hear ya ! please repeat")
+
+
